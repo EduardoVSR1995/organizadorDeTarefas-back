@@ -1,21 +1,22 @@
 CREATE DATABASE "organizador" ;
 
-CREATE TABLE "usuario"(
+CREATE TABLE "user"(
     "id"            SERIAL PRIMARY KEY,
-    "name"          TEXT NOT NULL
+    "name"          TEXT UNIQUE NOT NULL
 );
 
-CREATE TABLE "tarefa"(
+CREATE TABLE "assignment"(
     "id"            SERIAL PRIMARY KEY,
-    "tarefa"        TEXT NOT NULL,
-    "diaFim"        DATE NOT NULL,
-    "diaCriado"     DATE DEFAULT NOW() NOT NULL,
-    "responsavel"   INTEGER REFERENCES "usuario"("id") NOT NULL,
+    "name"          TEXT NOT NULL,
+    "assignment"    TEXT NOT NULL,
+    "dateEnd"       DATE NOT NULL,
+    "dateCriate"    DATE DEFAULT NOW() NOT NULL,
+    "responsible"   INTEGER REFERENCES "users"("id") NOT NULL,
     "status"        BOOLEAN DEFAULT TRUE NOT NULL
  );
 
- CREATE TABLE "responsavel"(
+ CREATE TABLE "responsible"(
     "id"            SERIAL PRIMARY KEY,
-    "usuarioId"     INTEGER REFERENCES "usuario"("id") NOT NULL,
-    "tarefaId"     INTEGER REFERENCES "tarefa"("id") NOT NULL
+    "usersId"        INTEGER REFERENCES "users"("id") NOT NULL,
+    "assignmentId"  INTEGER REFERENCES "assignment"("id") NOT NULL
  );

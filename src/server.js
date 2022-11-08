@@ -1,5 +1,5 @@
 import express, {json} from "express";
-import cors from 'cors';
+import cors from "cors";
 import dotenv from 'dotenv';
 import comanders from './comanders.js'
 
@@ -12,4 +12,4 @@ server.use(cors())
 
 server.use(comanders)
 
-server.listen(process.env.PORT, ()=>console.log(PORT))
+server.listen(process.env.PORT, ()=>console.log(process.env.PORT))
