@@ -1,6 +1,6 @@
 import express, {json} from "express";
-import cors from "cors";
-import dotenv from 'dotenv';
+import cors from 'cors';
+import dotenv from "dotenv";
 import comanders from './comanders.js'
 
 dotenv.config();
