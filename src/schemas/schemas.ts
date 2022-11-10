@@ -7,7 +7,8 @@ const creatuserSchema = joi.object({
 
 const creatassignmentSchema = joi.object({
     name:           joi.string().required(),
-    assignment :    joi.string().required()
+    assignment :    joi.string().required(),
+    date:           joi.date().required()
 })
 
 const authorizationSchema = joi.object({

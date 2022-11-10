@@ -16,6 +16,7 @@ CREATE TABLE "assignment"(
     "id"            SERIAL PRIMARY KEY,
     "name"          TEXT UNIQUE NOT NULL,
     "assignments"   TEXT NOT NULL,
+    "dateEnd"       TIMESTAMP,
     "dateCriate"    TIMESTAMP DEFAULT NOW() NOT NULL,
     "userCreat"     INTEGER REFERENCES "users"("id"),
     "status"        BOOLEAN DEFAULT TRUE NOT NULL

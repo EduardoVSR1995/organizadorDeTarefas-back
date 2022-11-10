@@ -1,6 +1,6 @@
 import express from "express";
 import { authorization , autorizationAssignment} from '../middlewares/validations.js'
-import { insertAssignment , AllAssignment, delAssignment, updatAssignment } from "../comtrollers/assignmentController.js";
+import { insertAssignment , AllAssignment, delAssignment, updatAssignment, contAssignment } from "../comtrollers/assignmentController.js";
 
 const assignment = express.Router();
 
@@ -10,6 +10,8 @@ assignment.get("/assignment", AllAssignment )
 
 assignment.delete("/assignment" ,authorization ,delAssignment)
 
-assignment.patch("/assignment" ,authorization, updatAssignment)
+assignment.patch("/assignment" , updatAssignment)
+
+assignment.get("/assigcount", contAssignment )
 
 export default assignment;

@@ -10,8 +10,10 @@ user.post("/loginuser", creatAssignmentValid , signinUser)
 
 user.get("/users" , allUsers)
 
-user. delete("/users", authorization, deluser)
+user.delete("/users", authorization, deluser)
 
 user.patch("/users", authorization, updatUser)
+
+
 
 export default user;

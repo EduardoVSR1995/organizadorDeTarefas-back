@@ -10,7 +10,7 @@ type TableColunIten = {
 
 type Insert = {
     table: string,
-    iten: (string | number)[]
+    iten: (string | number | Date)[]
 }
 
 type Aux = {
@@ -33,8 +33,18 @@ type BodyName = {
 type BodyAssignment = {
     name: string,
     assignment:string,
+    date?: Date,
     userCreat?: number
 }
+
+
+type Allcomplet = {
+    id:number,
+    assigs:number,
+    notComplet:number
+}
+
+
 
 type BodyLogin = {
     id:number,
@@ -46,7 +56,7 @@ type Assignment ={
     id: number,
     name: string,
     assignments: string,
-    dateEnd: unknown | Date,
+    dateEnd: (unknown | Date),
     dateCriate: Date,
     userCreat: number,
     status: boolean
@@ -60,6 +70,25 @@ type RowsId={
     id:number
 }
 
+type Allcont = {
+    assigCont:number,
+    name: string,
+    assignmentName: (string | null),
+
+}
+
+type Cont = {
+    id:number,
+    assignmentName:(string|null),
+    name: (string|null),
+}
+
+type Resolcont = QueryResult<Cont>
+
+type ResolAllcont= QueryResult<Allcont>
+
+type ResolAllcomplet= QueryResult<Allcomplet>
+
 type ResolAssignment= QueryResult<Assignment>
 
 type ResoltObj= QueryResult<object>
@@ -72,6 +101,10 @@ type ResoltInsert = QueryResult<RowsId>
 
 
 export{
+    Resolcont,
+    ResolAllcont,
+    ResolAllcomplet,
+    Allcomplet,
     RowsId,
     Assignment,
     ResolAssignment,

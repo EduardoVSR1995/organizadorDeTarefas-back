@@ -84,4 +84,95 @@ async function updateIten({table , colun, iten, iten1}:protocols.TableColunIten)
 }
 
 
-export {getItem , insert ,deleteIten, updateIten}
+async function countAssig(){
+
+  try {
+    const {rows} = await connection.query(`
+    SELECT
+    COUNT(i.status) as "complet" ,
+    COUNT(e.status) as "notComplet"
+    FROM assignment
+        LEFT JOIN assignment i
+         ON i.status = FALSE
+        LEFT JOIN assignment e
+         ON e.status = TRUE
+    `
+    ) as protocols.ResolAllcomplet
+
+    return rows
+    
+
+  } catch (error:protocols.Error) {
+
+    return error;    
+  }
+}
+
+async function countRespons(){
+
+  try {
+    const {rows} = await connection.query(`
+    SELECT
+    COUNT(responsible) as "assigs" ,
+    users.name
+    FROM users
+        LEFT JOIN responsible
+            ON users.id = responsible."usersId" 
+        LEFT JOIN users i
+         ON i.id = responsible."usersId"
+    
+         GROUP BY
+            users.name
+        ORDER BY "assigs" DESC
+    ;
+    `
+    ) as protocols.ResolAllcont
+
+    return rows
+    
+
+  } catch (error:protocols.Error) {
+
+    return error;    
+  }
+}
+
+
+async function allRespon(){
+
+  try {
+    const {rows} = await connection.query(`
+    SELECT
+    responsible.id,
+    assignment.name as "assignmentName", 
+    users.name
+    FROM users
+        LEFT JOIN responsible
+            ON users.id = responsible."usersId" 
+        LEFT JOIN assignment
+         ON assignment.id = responsible."assignmentId"
+        ;
+
+
+    `
+    ) as protocols.Resolcont
+
+    return rows
+    
+
+  } catch (error:protocols.Error) {
+
+    return error;    
+  }
+}
+
+
+export {
+  allRespon,
+  countRespons,
+  countAssig, 
+  getItem, 
+  insert,
+  deleteIten, 
+  updateIten
+}

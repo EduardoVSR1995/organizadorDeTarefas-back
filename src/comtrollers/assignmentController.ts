@@ -4,14 +4,13 @@ import * as repositors from '../repositoris/repositors.js';
 
 
 async function insertAssignment(req: Request , res: Response ){
-    const { name, assignment } = req.body as protocols.BodyAssignment
+    const { name, assignment ,date} = req.body as protocols.BodyAssignment
     
     const { usersId } = res.locals[0] as protocols.RowsIdName
-    console.log(res.locals)
 
     try {
 
-        await repositors.insert({table:`assignment(name, assignments, "userCreat")` , iten:[name , assignment , usersId] })
+        await repositors.insert({table:`assignment(name, assignments, "userCreat", "dateEnd")` , iten:[name , assignment , usersId, date] })
         
         res.sendStatus(200)
     } catch (error: protocols.Error) {
@@ -42,6 +41,9 @@ async function delAssignment(req: Request , res: Response ){
     const {usersId} = res.locals[0] as protocols.RowsIdName
 
     try {
+            if(!name) return res.sendStatus(401)
+
+
             const rows = await repositors.getItem({table:'assignment',colun:"name", iten:name, colun1: `"userCreat"`,iten1:usersId }) as protocols.ResoltObj[]
 
             
@@ -61,10 +63,10 @@ async function delAssignment(req: Request , res: Response ){
 async function updatAssignment(req: Request , res: Response ){
     const { name } = req.body as protocols.BodyName
 
-    const {usersId} = res.locals[0] as protocols.RowsIdName
-
     try {
-            const rows = await repositors.getItem({table:'assignment',colun:"name", iten:name, colun1: `"userCreat"`,iten1:usersId }) as protocols.Assignment[]
+            if(!name) return res.sendStatus(401)
+
+            const rows = await repositors.getItem({table:'assignment',colun:"name", iten:name }) as protocols.Assignment[]
 
             if(rows.length===0) return res.sendStatus(401)
 
@@ -83,7 +85,23 @@ async function updatAssignment(req: Request , res: Response ){
 }
 
 
+async function contAssignment(req: Request , res: Response ){
+
+    try {
+
+            const rows = await repositors.countAssig()
+
+            res.send(rows).status(200)
+
+        } catch (error: protocols.Error) {
+        res.sendStatus(400)
+    
+    }
+}
+
+
 export {
+    contAssignment,
     insertAssignment, 
     AllAssignment,
     delAssignment, 

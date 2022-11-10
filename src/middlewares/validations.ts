@@ -82,7 +82,7 @@ async function authorization (req:Request,res:Response,next:NextFunction){
 
 async function autorizationAssignment (req:Request,res:Response,next:NextFunction){
     
-    const { name, assignment} = req.body as protocols.BodyAssignment
+    const { name } = req.body as protocols.BodyAssignment
 
     const value = creatassignmentSchema.validate(req.body,{abortEarly: false})
 
