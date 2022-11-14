@@ -145,7 +145,7 @@ function countAssig() {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, connection.query("\n    SELECT\n    COUNT(i.status) as \"complet\" ,\n    COUNT(e.status) as \"notComplet\"\n    FROM assignment\n        LEFT JOIN assignment i\n         ON i.status = FALSE\n        LEFT JOIN assignment e\n         ON e.status = TRUE\n    ")];
+                    return [4 /*yield*/, connection.query("    \n    SELECT \n    COUNT(*) FILTER (WHERE assignment.status=false) as \"complet\",\n    COUNT(*) FILTER (WHERE assignment.status) as \"notComplet\"\n    FROM assignment;\n    ")];
                 case 1:
                     rows = (_a.sent()).rows;
                     return [2 /*return*/, rows];
