@@ -18,17 +18,17 @@ utilizando este link de acesso a api para você acessa as rotas
 
 ## Rotas e utilidades
 Rotas do usuario
-- post("/creatuser") criação de usuario objeto no formato {name,passoword}
-- post("/loginuser") login do usuario cadastrado objeto no formato {name,passoword}
+- post("/creatuser") criação de usuario objeto no formato {name:"nome-fulano",passoword:"senha-fulano"}
+- post("/loginuser") login do usuario cadastrado objeto no formato {name:"nome-fulano",passoword:"senha-fulano"}
 - get("/users") busca todos os usuarios cadastrados
-- delete("/users") (rota autenticada por Bearer token no headers.authorization) deleta o proprio usuario se for dono da conta objeto no formato {name}
-- patch("/users") (rota autenticada por Bearer token no headers.authorization) mudar nome do usuario se for dono da conta objeto no formato {name}
+- delete("/users") (rota autenticada por Bearer token no headers.authorization) deleta o proprio usuario se for dono da conta objeto no formato {name:"nome-fulano"}
+- patch("/users") (rota autenticada por Bearer token no headers.authorization) mudar nome do usuario se for dono da conta objeto no formato {name:"nome-fulano"}
 
 Rotas das atribuições
-- post("/assignment") (rota autenticada por Bearer token no headers.authorization) criação de atribuição objeto no formato {name, assignment ,date }
+- post("/assignment") (rota autenticada por Bearer token no headers.authorization) criação de atribuição objeto no formato {name:"nome-fulano", assignment:"tarefa" ,date:"2022-11-20" }
 - get("/assignment") busca todas as atribuições
-- delete("/assignment") (rota autenticada por Bearer token no headers.authorization) deleta a atribuiçao se for o criador dela objeto no formato {name}"nome da atribuição"
-- patch("/assignment") atualiza o status da atribuição para feita ou não feita ou o inverso objeto no formato {name}"nome da atribuição"
+- delete("/assignment") (rota autenticada por Bearer token no headers.authorization) deleta a atribuiçao se for o criador dela objeto no formato {name:"nome-atribuição"}"nome da atribuição"
+- patch("/assignment") atualiza o status da atribuição para feita ou não feita ou o inverso objeto no formato {name:"nome-atribuição"}"nome da atribuição"
 - get("/assigcount") retorna quantas atribuições estão prontas e não prontas
 
 Rotas das responsabilidades
