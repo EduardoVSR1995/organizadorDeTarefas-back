@@ -37,7 +37,7 @@ Rotas das responsabilidades
 - delete("/responsible/:id") (rota autenticada por Bearer token no headers.authorization) passando o id da atribuição via req.params.id deleta a resposabilidade se estiver associado ao seu usuario
 
 -------------------------------------------------------------------------------------------------------
-## Criando o banco local e rodando o servidor localmente
+## Criando o banco local e rodando o servidor organizadorDeTarefas-back localmente
 
 - Primeiro faça um git clone https://github.com/EduardoVSR1995/organizadorDeTarefas-back para sua maquina;
 - Com postgresSQL instalado na sua maquina crie o banco local com o comando CREATE DATABASE "organizador" ;
