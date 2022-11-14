@@ -46,7 +46,7 @@ Rotas das responsabilidades
 - Logo apos a criação do banco crie um arquivo .env na raiz(onde esta o arquivo package.json) do projeto seguindo o padrâo .env.exenple;
 - Com o terminal aberto na pasta raiz execute o comando npm i -y para instalar os pacotes nessesarios;
 - Para utilizar o projeto como desenvolvedor na pasta raiz rode o projeto com o comando npx nodemon src/server.ts;
-- para utilizar os comandos acima coloque o link da sua rota local; 
+- Para utilizar os comandos acima coloque o link da sua rota local; 
 
 
  
