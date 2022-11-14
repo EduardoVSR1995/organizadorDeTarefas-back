@@ -1,9 +1,10 @@
 # organizadorDeTarefas-back
 
-Praticando TS
+Praticando Ts
 -------------------------------------------------------------------------------------------------------
 
 Back-end organizador de tarefas <br/>
+Criado com intuito de praticar Ts de forma consistente e reproduzindo ao maximo oque e realizado no mercado<br>
 tecnologias utilizadas JavaScript | node.js | TS | express | postgresSQL  
 
 -------------------------------------------------------------------------------------------------------
