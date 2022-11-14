@@ -78,8 +78,6 @@ async function deletResponsible(req: Request , res: Response) {
     }
 }
 
-
-
 export {
     deletResponsible,
     insertResponsible,
