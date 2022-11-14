@@ -1,4 +1,3 @@
-import { date } from "joi";
 import connection from "../database/postgres.js";
 import * as protocols from "../protocols/protocols.js"
 
@@ -87,15 +86,11 @@ async function updateIten({table , colun, iten, iten1}:protocols.TableColunIten)
 async function countAssig(){
 
   try {
-    const {rows} = await connection.query(`
-    SELECT
-    COUNT(i.status) as "complet" ,
-    COUNT(e.status) as "notComplet"
-    FROM assignment
-        LEFT JOIN assignment i
-         ON i.status = FALSE
-        LEFT JOIN assignment e
-         ON e.status = TRUE
+    const {rows} = await connection.query(`    
+    SELECT 
+    COUNT(*) FILTER (WHERE assignment.status=false) as "complet",
+    COUNT(*) FILTER (WHERE assignment.status) as "notComplet"
+    FROM assignment;
     `
     ) as protocols.ResolAllcomplet
 
